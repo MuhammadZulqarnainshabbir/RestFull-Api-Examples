@@ -47,6 +47,29 @@ app.post('/resturants', (req, res) => {      // Create a new resturant
 
 })
 
+app.patch('/resturants/:id', (req, res) => {
+    Resturant.findByIdAndUpdate(req.params.id, req.body)
+        .then((resturant) => {
+            res.status(200);
+            res.send(resturant);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+})
+
+
+app.delete('/resturants/:id', (req, res) => {
+    Resturant.findOneAndDelete(req.params.id)
+        .then((resturant) => {
+            res.status(201);
+            res.send(resturant);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+})
+
 app.listen(3000, () => {
     console.log("Server Started on port 3000");
 });
