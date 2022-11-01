@@ -47,25 +47,25 @@ app.post('/resturants', (req, res) => {      // Create a new resturant
 
 })
 
-app.patch('/resturants/:id', (req, res) => {
-    Resturant.findByIdAndUpdate(req.params.id, req.body)
-        .then((resturant) => {
-            res.status(200);
-            res.send(resturant);
+app.patch('/resturants/:id', (req, res) => { // Update a resturant
+    Resturant.findByIdAndUpdate(req.params.id, req.body) // Find the resturant by id and update it
+        .then((resturant) => { // If the resturant is updated successfully
+            res.status(200); // Set the status code to 200 (OK)
+            res.send(resturant); // Send the resturant as a response to the client
         })
-        .catch((error) => {
-            console.log(error);
+        .catch((error) => { // If an error occurs
+            console.log(error); // Log the error to the console
         })
 })
 
 
-app.delete('/resturants/:id', (req, res) => {
-    Resturant.findOneAndDelete(req.params.id)
-        .then((resturant) => {
-            res.status(201);
-            res.send(resturant);
+app.delete('/resturants/:id', (req, res) => { // Delete a resturant
+    Resturant.findOneAndDelete(req.params.id) // Find the resturant by id and delete it
+        .then((resturant) => { // If the resturant is deleted successfully
+            res.status(201); // Set the status code to 201 (Created)
+            res.send(resturant); // Send the resturant as a response to the client
         })
-        .catch((error) => {
+        .catch((error) => { // If an error occurs
             console.log(error);
         })
 })
